@@ -10,7 +10,7 @@ const UserMain = () => {
     };
 
     return (
-        <div style={{maxWidth: '1160px', margin: '0 auto'}}>
+        <div className={'main-container'}>
             <Navbar cartCount={cartCount}/>
             <TourList onAddToCart={handleAddToCart}/>
         </div>

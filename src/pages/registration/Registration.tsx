@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "../../assets/style/login.css"
+import {NavLink} from "react-router-dom";
 
 const RegistrationPage = () => {
     const [username, setUsername] = useState('');
@@ -58,6 +59,15 @@ const RegistrationPage = () => {
                 </div>
                 <button type="submit" className="submit-button">Register</button>
             </form>
+            <NavLink to={'/login'} style={{
+                cursor: 'pointer',
+                textDecoration: 'none',
+                color: '#219c58',
+                marginTop: '1rem',
+                textAlign: 'start'
+            }}>
+                Login
+            </NavLink>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import TourCard from './TourCard';
 import {Tour} from "../../model/Tour";
 
-const TourList = ({onAddToCart}: any) => {
+const TourList = ({onAddToCart, isInCard}: { onAddToCart?: any, isInCard?: boolean }) => {
     const tours: Tour[] = [
         {
             id: 1,
@@ -67,7 +67,7 @@ const TourList = ({onAddToCart}: any) => {
             margin: '0 auto'
         }}>
             {tours.map((tour) => (
-                <TourCard key={tour.id} tour={tour} onAddToCart={onAddToCart}/>
+                <TourCard key={tour.id} tour={tour} onAddToCart={onAddToCart} isInCard={isInCard}/>
             ))}
         </div>
     );

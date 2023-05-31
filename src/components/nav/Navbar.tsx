@@ -1,6 +1,10 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
+import {useAuth0} from "@auth0/auth0-react";
 
-const Navbar = ({cartCount}: { cartCount: number }) => {
+const Navbar = ({cartCount}: { cartCount?: number }) => {
+    const {logout, isAuthenticated} = useAuth0();
+
     return (
         <nav style={{
             display: 'flex',
@@ -12,10 +16,29 @@ const Navbar = ({cartCount}: { cartCount: number }) => {
             borderRadius: '10px',
             color: 'white'
         }}>
-            <h1 style={{cursor: 'pointer'}}>Travel</h1>
+            <NavLink to={'/'} style={{cursor: 'pointer', textDecoration: 'none', color: 'white'}}>
+                <h1>Travel</h1>
+            </NavLink>
             <div style={{display: 'flex', gap: '3rem', fontWeight: 'bold'}}>
-                <div style={{cursor: 'pointer'}}>Card [{cartCount}]</div>
-                <div style={{cursor: 'pointer'}}>User</div>
+                {
+                    cartCount &&
+                    <NavLink to={'/cart'} style={{cursor: 'pointer', textDecoration: 'none', color: 'white'}}>
+                        Card [{cartCount}]
+                    </NavLink>
+                }
+                {
+                    isAuthenticated &&
+                    <NavLink to={'/login'} onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}
+                             style={{cursor: 'pointer', textDecoration: 'none', color: 'white'}}>
+                        Logout
+                    </NavLink>
+                }
+                {
+                    !isAuthenticated &&
+                    <NavLink to={'/login'} style={{cursor: 'pointer', textDecoration: 'none', color: 'white'}}>
+                        Login
+                    </NavLink>
+                }
             </div>
         </nav>
     );

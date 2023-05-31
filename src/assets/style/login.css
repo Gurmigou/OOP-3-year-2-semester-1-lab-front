@@ -25,6 +25,7 @@ input {
     border: 2px solid #219c58;
     border-radius: 0.25rem;
     font-size: 1rem;
+    min-width: 215px;
 }
 
 select {

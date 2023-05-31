@@ -7,3 +7,15 @@ export type Tour = {
     discount?: number;
     isHot: boolean;
 }
+
+export type TourDetail = {
+    id: number;
+    title: string;
+    isHot: boolean;
+}
+
+export type Client = {
+    id: number;
+    name: string;
+    discount: number;
+}
